@@ -160,7 +160,6 @@ class AddScreen extends StatelessWidget {
                           dateRaised: data,
                           status: status));
                   Navigator.pop(context);
-                  
                 },
                 child: Text(
                   'Add Ticket',

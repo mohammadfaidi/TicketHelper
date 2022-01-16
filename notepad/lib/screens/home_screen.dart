@@ -56,7 +56,7 @@ class NotesCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(15),
       padding: EdgeInsets.all(15),
-      height: 200,
+      height: 220,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(15)),
       child: Column(
@@ -97,6 +97,22 @@ class NotesCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
               )),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                iconSize: 30,
+                onPressed: () {
+                  Provider.of<NotesOperation>(context, listen: false)
+                      .remove(note);
+                },
+              ),
+            ],
+          )
         ],
       ),
     );
