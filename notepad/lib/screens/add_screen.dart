@@ -1,9 +1,35 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notepad/Providers/Note.dart';
 import 'package:notepad/Providers/NotesOperation.dart';
 import 'package:provider/provider.dart';
 
-class AddScreen extends StatelessWidget {
+class AddScreen extends StatefulWidget {
+  @override
+  State<AddScreen> createState() => _AddScreenState();
+}
+
+class _AddScreenState extends State<AddScreen> {
+  String date = "";
+  DateTime selectedDate = DateTime.now();
+  _selectDate(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2010),
+      lastDate: DateTime(2025),
+    );
+    if (selected != null && selected != selectedDate)
+      setState(() {
+        selectedDate = selected;
+        date = selectedDate.day.toString() +
+            "/" +
+            selectedDate.month.toString() +
+            "/" +
+            selectedDate.year.toString();
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     late String titleText;
@@ -22,6 +48,17 @@ class AddScreen extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
+        /*
+        actions: [
+          IconButton(
+            icon: Icon(Icons.calendar_today),
+            tooltip: 'Tap to open date picker',
+            onPressed: () {
+              _selectDate(context);
+            },
+          ),
+        ],
+        */
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -118,7 +155,31 @@ class AddScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: TextField(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+                IconButton(
+                  icon: Icon(Icons.calendar_today),
+                  tooltip: 'Tap to open date picker',
+                  onPressed: () {
+                    _selectDate(context);
+                  },
+                ),
+              ],
+            )
+                /*Text(_chosenDateTime != null
+                  ? _chosenDateTime.toString()
+                  : 'No date time picked!'),
+
+                  */
+                /*TextField(
                 decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Enter Date",
@@ -131,7 +192,8 @@ class AddScreen extends StatelessWidget {
                   data = value;
                 },
               ),
-            ),
+              */
+                ),
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
@@ -157,7 +219,13 @@ class AddScreen extends StatelessWidget {
                           priority: priority,
                           raisedby: raisedby,
                           assignto: assignto,
-                          dateRaised: data,
+                          dateRaised: date,
+                          /*selectedDate.day.toString() +
+                              "/" +
+                              selectedDate.month.toString() +
+                              "/" +
+                              selectedDate.year.toString(),
+                              */
                           status: status));
                   Navigator.pop(context);
                 },
