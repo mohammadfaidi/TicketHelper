@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:notepad/Providers/Note.dart';
 import 'package:notepad/Providers/NotesOperation.dart';
 import 'package:notepad/screens/add_screen.dart';
@@ -27,7 +28,14 @@ class HomeScreen extends StatelessWidget {
       ),
       backgroundColor: Colors.lightBlue,
       appBar: AppBar(
-        title: Text("TicketHelper"),
+        title: Text(
+          "TicketHelper",
+          style: GoogleFonts.dosis(
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.normal,
+              color: Colors.white),
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
