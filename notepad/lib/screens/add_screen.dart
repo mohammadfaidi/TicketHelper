@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notepad/Providers/Note.dart';
 import 'package:notepad/Providers/NotesOperation.dart';
+import 'package:notepad/screens/compbox.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,95 +13,9 @@ class AddScreen extends StatefulWidget {
 }
 
 class _AddScreenState extends State<AddScreen> {
-  List<DropdownMenuItem<String>> get dropdownItems {
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(
-          child: Text(
-            "Low",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Low"),
-      DropdownMenuItem(
-          child: Text(
-            "Medium",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Medium"),
-      DropdownMenuItem(
-          child: Text(
-            "High",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "High"),
-    ];
-    return menuItems;
-  } 
-
-  List<DropdownMenuItem<String>> get dropdownItems2 {
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(
-          child: Text(
-            "Low",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Low"),
-      DropdownMenuItem(
-          child: Text(
-            "Medium",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Medium"),
-      DropdownMenuItem(
-          child: Text(
-            "High",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "High"),
-    ];
-    return menuItems;
-  }
-
-  List<DropdownMenuItem<String>> get dropdownItems3 {
-    List<DropdownMenuItem<String>> menuItems = [
-      DropdownMenuItem(
-          child: Text(
-            "Open",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Open"),
-      DropdownMenuItem(
-          child: Text(
-            "In Progress",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "In Progress"),
-      DropdownMenuItem(
-          child: Text(
-            "Closed",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Closed"),
-      DropdownMenuItem(
-          child: Text(
-            "On hold",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "On hold"),
-      DropdownMenuItem(
-          child: Text(
-            "Rejected",
-            style: GoogleFonts.lato(fontStyle: FontStyle.italic),
-          ),
-          value: "Rejected"),
-    ];
-    return menuItems;
-  }
-
   String selectedValue = "Low";
   String selectedValue2 = "Low";
-
   String selectedValue3 = "Open";
-
   String date = "";
   DateTime selectedDate = DateTime.now();
 
@@ -213,7 +128,7 @@ class _AddScreenState extends State<AddScreen> {
                           print(selectedValue);
                         });
                       },
-                      items: dropdownItems)
+                      items: CobmoBox.dropdownItems)
                 ],
               ),
               Row(
@@ -238,7 +153,7 @@ class _AddScreenState extends State<AddScreen> {
                           print(selectedValue2);
                         });
                       },
-                      items: dropdownItems2)
+                      items: CobmoBox.dropdownItems2)
                 ],
               ),
               TextField(
@@ -313,7 +228,7 @@ class _AddScreenState extends State<AddScreen> {
                           print(selectedValue3);
                         });
                       },
-                      items: dropdownItems3)
+                      items: CobmoBox.dropdownItems3)
                 ],
               ),
               SizedBox(
