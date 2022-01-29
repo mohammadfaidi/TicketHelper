@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:notepad/Providers/Note.dart';
 import 'package:notepad/Providers/NotesOperation.dart';
 import 'package:notepad/screens/compbox.dart';
+import 'package:notepad/widgets/Feild.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,34 +79,16 @@ class _AddScreenState extends State<AddScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextField(
-                decoration: InputDecoration(
-                    hintText: "Problem",
-                    hintStyle: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    )),
-                style: TextStyle(fontSize: 20, color: Colors.white),
-                controller: titleController,
-                /*
-                onChanged: (value) {
-                  titleText = value;
-                  
-                },
-                */
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    //  border: InputBorder.none,
-                    hintText: "Desscription",
-                    hintStyle: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    )),
-                style: TextStyle(fontSize: 18, color: Colors.white),
-                controller: descriptionController,
-              ),
+              Feild(
+                  hintText: "Problem ",
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  ControllerGenrall: titleController),
+              Feild(
+                  hintText: "Desscription ",
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  ControllerGenrall: descriptionController),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -156,36 +139,16 @@ class _AddScreenState extends State<AddScreen> {
                       items: CobmoBox.dropdownItems2)
                 ],
               ),
-              TextField(
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Raised By",
-                    hintStyle: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    )),
-                style: GoogleFonts.teko(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    fontStyle: FontStyle.normal,
-                    color: Colors.white),
-                controller: raisedController,
-              ),
-              TextField(
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Assign To",
-                    hintStyle: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    )),
-                style: GoogleFonts.teko(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    fontStyle: FontStyle.normal,
-                    color: Colors.white),
-                controller: assignController,
-              ),
+              Feild(
+                  hintText: "Raised By",
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  ControllerGenrall: raisedController),
+              Feild(
+                  hintText: "Assign To",
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  ControllerGenrall: assignController),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
